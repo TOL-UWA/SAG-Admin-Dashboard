@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SheCode Africa Admin</title>
+  <meta name="description" content="SheCode Africa programme administrator dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="logo.png" alt="She Code Africa" class="sidebar-logo-img" />
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- 1. Dashboard -->
+      <a class="nav-item" data-page="dashboard" onclick="navigateTo('dashboard', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <rect x="2.5" y="2.5" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="11" y="2.5" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="2.5" y="11" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="11" y="11" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span class="nav-label">Dashboard</span>
+      </a>
+
+      <!-- 2. Team -->
+      <a class="nav-item" data-page="team" onclick="navigateTo('team', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="6.5" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M3.5 17c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-label">Team</span>
+      </a>
+
+      <!-- 3. Volunteers -->
+      <a class="nav-item" data-page="volunteers" onclick="navigateTo('volunteers', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <path d="M10 16.5l-5.8-5.3a4.2 4.2 0 010-6.1 4.5 4.5 0 016.3 0L10 5.6l.5-.5a4.5 4.5 0 016.3 0 4.2 4.2 0 010 6.1L10 16.5z" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="nav-label">Volunteers</span>
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+
+      <!-- 4. Talent Request -->
+      <a class="nav-item" data-page="talent" onclick="navigateTo('talent', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="8" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M2.5 17c0-3 2.5-5.5 5.5-5.5 1.5 0 2.8.6 3.8 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M16 16l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-label">Talent Request</span>
+      </a>
+
+      <!-- 5. Enquiries -->
+      <a class="nav-item" data-page="enquiries" onclick="navigateTo('enquiries', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7.8 8a2.3 2.3 0 014.2 1.2c0 1.5-2 1.8-2 3M10 14.8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-label">Enquiries</span>
+      </a>
+
+      <!-- 6. Testimonials (Featured in Image 1) -->
+      <a class="nav-item" data-page="testimonials" onclick="navigateTo('testimonials', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <path d="M4 4h12a2 2 0 012 2v7a2 2 0 01-2 2H7l-4 3V6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M7 8h6M7 11h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-label">Testimonials</span>
+      </a>
+
+      <!-- 7. Reports -->
+      <a class="nav-item" data-page="reports" onclick="navigateTo('reports', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <path d="M5 3h7l4 4v10a1.5 1.5 0 01-1.5 1.5H5A1.5 1.5 0 013.5 17V4.5A1.5 1.5 0 015 3z" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M12 3v4h4M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-label">Reports</span>
+      </a>
+
+      <!-- 8. Events -->
+      <a class="nav-item" data-page="events" onclick="navigateTo('events', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="4.5" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M3 8.5h14M7 2.5v3M13 2.5v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-label">Events</span>
+      </a>
+
+      <!-- 9. Chapters -->
+      <a class="nav-item" data-page="chapters" onclick="navigateTo('chapters', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="5" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="5" cy="15" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="15" cy="15" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M8.5 7L6 13M11.5 7L14 13" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="nav-label">Chapters</span>
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+
+      <!-- 10. Stem a Girl (Special dropdown matching Image 3) -->
+      <div class="stem-group">
+        <div class="stem-nav-item active" id="stemNavParent" onclick="toggleStemMenu(event)">
+          <svg class="stem-sparkle-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="1.5" fill="currentColor"/>
+          </svg>
+          <span class="nav-label">Stem a Girl</span>
+          <button class="stem-toggle-box" id="stemToggleBtn" title="Toggle Stem a Girl sub-items" type="button">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2.5 7.5L6 4L9.5 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- 2 Sub-items under Stem a Girl: 1. Participant, 2. Consent -->
+        <div class="stem-submenu" id="stemSubmenu">
+          <div class="stem-subitem" data-page="participants" onclick="navigateTo('participants', this)">
+            <span class="stem-dot"></span>
+            <span>Participant</span>
+          </div>
+          <div class="stem-subitem active" data-page="consent" onclick="navigateTo('consent', this)">
+            <span class="stem-dot"></span>
+            <span>Consent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Academy -->
+      <a class="nav-item" data-page="academy" onclick="navigateTo('academy', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <path d="M2.5 7.5L10 3.5l7.5 4L10 11.5 2.5 7.5z" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M5.5 9v5c0 2 2 3.5 4.5 3.5s4.5-1.5 4.5-3.5V9M17.5 7.5V14" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="nav-label">Academy</span>
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+
+      <!-- 12. Initiatives -->
+      <a class="nav-item" data-page="initiatives" onclick="navigateTo('initiatives', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M10 2.5v2.5M10 15v2.5M2.5 10H5M15 10h2.5" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="nav-label">Initiatives</span>
+      </a>
+
+      <!-- 13. Partners/Sponsors -->
+      <a class="nav-item" data-page="partners" onclick="navigateTo('partners', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <path d="M10 2.5l6.5 3v5c0 4-3 6.8-6.5 8-3.5-1.2-6.5-4-6.5-8v-5l6.5-3z" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="nav-label">Partners/Sponsors</span>
+      </a>
+
+      <!-- 14. Jobs -->
+      <a class="nav-item" data-page="jobs" onclick="navigateTo('jobs', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <rect x="3" y="6" width="14" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M7 6V4a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0113 4v2" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M3 10.5h14" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="nav-label">Jobs</span>
+      </a>
+
+      <!-- 15. Companies -->
+      <a class="nav-item" data-page="companies" onclick="navigateTo('companies', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <path d="M3.5 17V5a1.5 1.5 0 011.5-1.5h6A1.5 1.5 0 0112.5 5v12M12.5 9h4a1.5 1.5 0 011.5 1.5V17M2 17h16M6.5 7h2M6.5 10.5h2M6.5 14h2M14 12.5h1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-label">Companies</span>
+      </a>
+
+      <!-- 16. Admin Settings -->
+      <a class="nav-item" data-page="settings" onclick="navigateTo('settings', this)">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M16 10a6 6 0 00-.1-1l1.5-1.2-1.4-2.4-1.8.6a6 6 0 00-1.7-1l-.3-1.9H9.5L9.2 5a6 6 0 00-1.7 1l-1.8-.6L4.3 7.8 5.8 9a6 6 0 000 2L4.3 12.2l1.4 2.4 1.8-.6a6 6 0 001.7 1l.3 1.9h2.6l.3-1.9a6 6 0 001.7-1l1.8.6 1.4-2.4-1.5-1.2c.1-.3.1-.7.1-1z" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="nav-label">Admin Settings</span>
+        <svg class="nav-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </a>
+
+      <!-- 17. Logout (bottom) -->
+      <a class="nav-item nav-item--logout" onclick="handleLogout()">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 17H4a1.5 1.5 0 01-1.5-1.5V4.5A1.5 1.5 0 014 3h3.5M13 14l4-4-4-4M7 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="nav-label">Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Topbar (Matching Image 1) -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="topbar-title">SheCode Africa Admin</div>
+      </div>
+      <div class="topbar-actions">
+        <!-- Sun / Theme icon button -->
+        <button class="topbar-icon-btn" title="Toggle theme" onclick="showToast('Theme switched')">
+          <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M4.7 15.3l1.4-1.4M13.9 6.1l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <!-- Profile outline icon button -->
+        <button class="topbar-icon-btn" title="Admin profile" onclick="showToast('Admin Profile: Amara Okonkwo')">
+          <svg width="17" height="17" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4.5 16.5c0-2.8 2.5-5 5.5-5s5.5 2.2 5.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page: Consent Management (Active by default, matching Image 1) -->
+    <div class="page active" id="page-consent">
+      <div class="table-card">
+        <div class="card-header-row">
+          <div>
+            <h1 class="card-title">Consent Management</h1>
+            <p class="card-subtitle">Review, verify, and manage guardian consent for learners under 18.</p>
+          </div>
+          <div class="card-count" id="consentCount">12 pending consent(s)</div>
+        </div>
+
+        <div class="card-toolbar">
+          <div class="toolbar-left">
+            <input type="text" class="card-search-input" placeholder="Search by learner or guardian..." id="consentSearch" oninput="filterConsentTable()" />
+
+            <!-- Custom Filter Dropdown (Exact match for Image 1) -->
+            <div class="filter-dropdown-wrap">
+              <button class="btn-filter" id="consentFilterBtn" onclick="toggleFilterPopover(event)">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 3h10M4 7h6M6 11h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Filters
+              </button>
+              <div class="filter-popover" id="consentFilterPopover">
+                <div class="filter-popover-title">State</div>
+                <div class="filter-select-box">
+                  <div class="filter-select-trigger" onclick="toggleSelectMenu(event)">
+                    <span id="currentFilterValue">Any</span>
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                  </div>
+                  <div class="filter-select-options" id="filterSelectOptions">
+                    <div class="filter-select-opt active" data-val="all" onclick="selectStateFilter('all', 'Any', this)">Any</div>
+                    <div class="filter-select-opt" data-val="Approved" onclick="selectStateFilter('Approved', 'Approved', this)">Approved</div>
+                    <div class="filter-select-opt" data-val="Pending" onclick="selectStateFilter('Pending', 'Pending', this)">Pending</div>
+                    <div class="filter-select-opt" data-val="Deactivated" onclick="selectStateFilter('Deactivated', 'Deactivated', this)">Deactivated</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Export button -->
+            <button class="btn-export" onclick="exportConsentCSV()">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Export
+            </button>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-page-nav" id="consentPrevBtn" onclick="prevConsentPage()">Prev</button>
+            <span class="page-indicator" id="consentPageIndicator">Page 1 / 1</span>
+            <button class="btn-page-nav" id="consentNextBtn" onclick="nextConsentPage()">Next</button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="sca-table" id="consentTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Age</th>
+                <th>Guardian Email</th>
+                <th>State</th>
+                <th>Account</th>
+                <th>Created</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="consentTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Testimonials (Exact replica of Image 1) -->
+    <div class="page" id="page-testimonials">
+      <div class="table-card">
+        <div class="card-header-row">
+          <div>
+            <h1 class="card-title">Testimonials</h1>
+            <p class="card-subtitle">Review, publish, and manage testimonials submitted across the platform.</p>
+          </div>
+          <div class="card-count">3 testimonial(s)</div>
+        </div>
+
+        <div class="card-toolbar">
+          <div class="toolbar-left">
+            <input type="text" class="card-search-input" placeholder="Search by name or role..." />
+            <button class="btn-filter">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 3h10M4 7h6M6 11h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Filters
+            </button>
+            <button class="btn-export">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Export
+            </button>
+            <button class="btn-export" style="background:#C1127A">Add Testimonial</button>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-page-nav" disabled>Prev</button>
+            <span class="page-indicator">Page 1 / 1</span>
+            <button class="btn-page-nav" disabled>Next</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="sca-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Testimonial</th>
+                <th>State</th>
+                <th>Updated</th>
+                <th>Created</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="td-user-name">Chioma E</span></td>
+                <td>Lead</td>
+                <td class="td-truncate">They say your network is your net worth. SCA is a vibrant community packe...</td>
+                <td><span class="pill-account pill-account--active">published</span></td>
+                <td class="td-date">22 Jul, 2026</td>
+                <td class="td-date">06 Dec, 2025</td>
+                <td>
+                  <div class="action-cell">
+                    <button class="action-icon-btn" title="View details" onclick="showDrawerDetails('Chioma E', 'Lead', 'They say your network is your net worth. SCA is a vibrant community packed with brilliant women.', 'Published', '22 Jul, 2026')">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M1.5 8s2.5-5 6.5-5 6.5 5 6.5 5-2.5 5-6.5 5-6.5-5z" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.4"/></svg>
+                    </button>
+                    <button class="action-icon-btn" title="Edit testimonial" onclick="showDrawerDetails('Chioma E', 'Lead', 'They say your network is your net worth. SCA is a vibrant community packed with brilliant women.', 'Published', '22 Jul, 2026')">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M11.5 2.5a1.8 1.8 0 012.5 2.5L5.5 13.5l-3.5 1 1-3.5 8.5-8.5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="td-user-name">Damilola B</span></td>
+                <td>Product Manager</td>
+                <td class="td-truncate">If I were to rate myself now, I would say I am seven or eight out of ten, and ...</td>
+                <td><span class="pill-account pill-account--active">published</span></td>
+                <td class="td-date">06 Dec, 2025</td>
+                <td class="td-date">06 Dec, 2025</td>
+                <td>
+                  <div class="action-cell">
+                    <button class="action-icon-btn" title="View details" onclick="showDrawerDetails('Damilola B', 'Product Manager', 'If I were to rate myself now, I would say I am seven or eight out of ten, and getting better every day with SCA mentorship.', 'Published', '06 Dec, 2025')">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M1.5 8s2.5-5 6.5-5 6.5 5 6.5 5-2.5 5-6.5 5-6.5-5z" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.4"/></svg>
+                    </button>
+                    <button class="action-icon-btn" title="Edit testimonial" onclick="showDrawerDetails('Damilola B', 'Product Manager', 'If I were to rate myself now, I would say I am seven or eight out of ten, and getting better every day with SCA mentorship.', 'Published', '06 Dec, 2025')">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M11.5 2.5a1.8 1.8 0 012.5 2.5L5.5 13.5l-3.5 1 1-3.5 8.5-8.5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="td-user-name">Blessing B</span></td>
+                <td>Product Manager</td>
+                <td class="td-truncate">The She Code Africa Mentorship Program really boosted my tech journey i...</td>
+                <td><span class="pill-account pill-account--active">published</span></td>
+                <td class="td-date">06 Dec, 2025</td>
+                <td class="td-date">06 Dec, 2025</td>
+                <td>
+                  <div class="action-cell">
+                    <button class="action-icon-btn" title="View details" onclick="showDrawerDetails('Blessing B', 'Product Manager', 'The She Code Africa Mentorship Program really boosted my tech journey in ways I could never have imagined.', 'Published', '06 Dec, 2025')">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M1.5 8s2.5-5 6.5-5 6.5 5 6.5 5-2.5 5-6.5 5-6.5-5z" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.4"/></svg>
+                    </button>
+                    <button class="action-icon-btn" title="Edit testimonial" onclick="showDrawerDetails('Blessing B', 'Product Manager', 'The She Code Africa Mentorship Program really boosted my tech journey in ways I could never have imagined.', 'Published', '06 Dec, 2025')">
+                      <svg viewBox="0 0 16 16" fill="none"><path d="M11.5 2.5a1.8 1.8 0 012.5 2.5L5.5 13.5l-3.5 1 1-3.5 8.5-8.5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Participants (Under Stem a Girl) -->
+    <div class="page" id="page-participants">
+      <div class="table-card">
+        <div class="card-header-row">
+          <div>
+            <h1 class="card-title">Participant Management</h1>
+            <p class="card-subtitle">Manage and track registered learners across STEM programmes.</p>
+          </div>
+          <div class="card-count" id="partTotalCount">120 participant(s)</div>
+        </div>
+
+        <div class="card-toolbar">
+          <div class="toolbar-left">
+            <input type="text" class="card-search-input" placeholder="Search by name or email..." id="participantSearch" oninput="applyFilters()" />
+            <div class="filter-dropdown-wrap">
+              <button class="btn-filter" id="partFilterBtn" onclick="togglePartFilterPopover(event)">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 3h10M4 7h6M6 11h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Filters
+              </button>
+              <div class="filter-popover filter-popover--wide" id="partFilterPopover">
+                <div class="filter-popover-title">Course</div>
+                <select class="filter-select-native" id="filterCourse" onchange="applyFilters()">
+                  <option value="">All Courses</option>
+                  <option value="Coding With Scratch">Coding With Scratch</option>
+                  <option value="Game Development">Game Development</option>
+                  <option value="Robotics">Robotics</option>
+                </select>
+
+                <div class="filter-popover-title">Age Range</div>
+                <select class="filter-select-native" id="filterAge" onchange="applyFilters()">
+                  <option value="">All Ages (10–21)</option>
+                  <option value="10-13">10–13 yrs</option>
+                  <option value="14-17">14–17 yrs</option>
+                  <option value="18-21">18–21 yrs</option>
+                </select>
+
+                <div class="filter-popover-title">Country</div>
+                <select class="filter-select-native" id="filterCountry" onchange="applyFilters()">
+                  <option value="">All Countries</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Uganda">Uganda</option>
+                  <option value="Rwanda">Rwanda</option>
+                </select>
+
+                <div class="filter-popover-title">Status</div>
+                <select class="filter-select-native" id="filterStatus" onchange="applyFilters()">
+                  <option value="">All Statuses</option>
+                  <option value="Active">Active</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+
+                <div class="filter-popover-title">Enrolled</div>
+                <select class="filter-select-native" id="filterEnrolled" onchange="applyFilters()">
+                  <option value="">Any time</option>
+                  <option value="today">Today</option>
+                  <option value="7d">Last 7 days</option>
+                  <option value="30d">Last 30 days</option>
+                  <option value="quarter">This quarter</option>
+                  <option value="custom">Custom range</option>
+                </select>
+                <div class="filter-date-range" id="filterDateRange">
+                  <label class="filter-date-field">
+                    <span>From</span>
+                    <input type="date" class="filter-select-native" id="filterDateFrom" onchange="applyFilters()" />
+                  </label>
+                  <label class="filter-date-field">
+                    <span>To</span>
+                    <input type="date" class="filter-select-native" id="filterDateTo" onchange="applyFilters()" />
+                  </label>
+                </div>
+
+                <button class="btn-reset-filters" onclick="clearFilters()">Reset All Filters</button>
+              </div>
+            </div>
+            <button class="btn-export" onclick="exportCSV()">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Export
+            </button>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-page-nav" id="partPrevBtn" onclick="prevPartPage()">Prev</button>
+            <span class="page-indicator" id="partPageIndicator">Page 1 / 1</span>
+            <button class="btn-page-nav" id="partNextBtn" onclick="nextPartPage()">Next</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="sca-table" id="participantsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Age</th>
+                <th>Country</th>
+                <th>Status</th>
+                <th>Enrolled</th>
+                <th>Completion</th>
+              </tr>
+            </thead>
+            <tbody id="participantsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Courses (Under Stem a Girl) -->
+    <div class="page" id="page-courses">
+      <div class="card-header-row" style="margin-bottom:20px;">
+        <div>
+          <h1 class="card-title">Stem a Girl — Courses</h1>
+          <p class="card-subtitle">Course catalog, enrollment metrics, and completion rates.</p>
+        </div>
+        <button class="btn-export" style="background:#C1127A" onclick="showToast('Add course module')">+ Add Course</button>
+      </div>
+
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-card-top" style="background:linear-gradient(135deg,#FDF2F8,#fff)">
+            <div class="course-icon-badge">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6a1 1 0 011-1h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6z" stroke="#C1127A" stroke-width="1.6"/><path d="M9 11l2 2 4-4" stroke="#C1127A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="pill-account pill-account--active">Active</span>
+          </div>
+          <div class="course-card-body">
+            <h3 class="course-name">Coding With Scratch</h3>
+            <p class="course-desc">Introductory visual programming using MIT Scratch for young creators. Ages 10–13.</p>
+            <div class="course-stats-row">
+              <div class="course-stat">
+                <div class="course-stat-val">1,042</div>
+                <div class="course-stat-lbl">Enrolled</div>
+              </div>
+              <div class="course-stat">
+                <div class="course-stat-val">74%</div>
+                <div class="course-stat-lbl">Completion</div>
+              </div>
+              <div class="course-stat">
+                <div class="course-stat-val">12</div>
+                <div class="course-stat-lbl">Lessons</div>
+              </div>
+            </div>
+            <div class="course-progress-wrap">
+              <div class="course-progress-label"><span>Completion Progress</span><span>74%</span></div>
+              <div class="course-progress-track"><div class="course-progress-bar" style="width:74%;background:#C1127A"></div></div>
+            </div>
+            <div class="course-dropoff">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#F59E0B" stroke-width="1.2"/><path d="M7 4.5v3M7 9h.01" stroke="#F59E0B" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Drop-off point: <strong>Lesson 7</strong> — Variables & Loops
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-card-top" style="background:linear-gradient(135deg,#EEF2FF,#fff)">
+            <div class="course-icon-badge" style="background:#EEF2FF">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#6366F1" stroke-width="1.6"/><path d="M9 9l6 6M15 9l-6 6" stroke="#6366F1" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <span class="pill-account pill-account--active" style="background:#EEF2FF;color:#6366F1">Active</span>
+          </div>
+          <div class="course-card-body">
+            <h3 class="course-name">Game Development</h3>
+            <p class="course-desc">2D game design, Pygame fundamentals, logic and interactive mechanics. Ages 12–17.</p>
+            <div class="course-stats-row">
+              <div class="course-stat">
+                <div class="course-stat-val" style="color:#6366F1">849</div>
+                <div class="course-stat-lbl">Enrolled</div>
+              </div>
+              <div class="course-stat">
+                <div class="course-stat-val" style="color:#6366F1">61%</div>
+                <div class="course-stat-lbl">Completion</div>
+              </div>
+              <div class="course-stat">
+                <div class="course-stat-val">14</div>
+                <div class="course-stat-lbl">Lessons</div>
+              </div>
+            </div>
+            <div class="course-progress-wrap">
+              <div class="course-progress-label"><span>Completion Progress</span><span>61%</span></div>
+              <div class="course-progress-track"><div class="course-progress-bar" style="width:61%;background:#6366F1"></div></div>
+            </div>
+            <div class="course-dropoff">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#F59E0B" stroke-width="1.2"/><path d="M7 4.5v3M7 9h.01" stroke="#F59E0B" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Drop-off point: <strong>Lesson 5</strong> — Collision Detection
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-card-top" style="background:linear-gradient(135deg,#DCFCE7,#fff)">
+            <div class="course-icon-badge" style="background:#DCFCE7">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#16A34A" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="pill-account pill-account--active">Active</span>
+          </div>
+          <div class="course-card-body">
+            <h3 class="course-name">Robotics</h3>
+            <p class="course-desc">Hardware fundamentals with Arduino and microcontroller sensors. Ages 14–21.</p>
+            <div class="course-stats-row">
+              <div class="course-stat">
+                <div class="course-stat-val" style="color:#16A34A">870</div>
+                <div class="course-stat-lbl">Enrolled</div>
+              </div>
+              <div class="course-stat">
+                <div class="course-stat-val" style="color:#16A34A">70%</div>
+                <div class="course-stat-lbl">Completion</div>
+              </div>
+              <div class="course-stat">
+                <div class="course-stat-val">10</div>
+                <div class="course-stat-lbl">Lessons</div>
+              </div>
+            </div>
+            <div class="course-progress-wrap">
+              <div class="course-progress-label"><span>Completion Progress</span><span>70%</span></div>
+              <div class="course-progress-track"><div class="course-progress-bar" style="width:70%;background:#16A34A"></div></div>
+            </div>
+            <div class="course-dropoff">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#F59E0B" stroke-width="1.2"/><path d="M7 4.5v3M7 9h.01" stroke="#F59E0B" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Drop-off point: <strong>Lesson 9</strong> — Sensor Calibration
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Dashboard (ADM-01) -->
+    <div class="page" id="page-dashboard">
+      <div class="card-header-row" style="margin-bottom:20px;">
+        <div>
+          <h1 class="card-title">Dashboard Overview</h1>
+          <p class="card-subtitle">Real-time statistics on registered learners, courses, and consent compliance.</p>
+        </div>
+        <button class="btn-export" onclick="exportConsentCSV()">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export Summary
+        </button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card stat-card--primary">
+          <div class="stat-card-header">
+            <div class="stat-icon-badge stat-icon-badge--magenta">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 18c0-3.3 2.7-6 6-6s6 2.7 6 6M15 9v5M12.5 11.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="stat-trend stat-trend--up">+12.4%</span>
+          </div>
+          <div class="stat-value" id="stat-participants">1,284</div>
+          <div class="stat-label">Total Participants</div>
+          <div class="stat-sub">+154 this week</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-icon-badge stat-icon-badge--blue">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.5"/><path d="M7 9h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="stat-trend stat-trend--up">+8.1%</span>
+          </div>
+          <div class="stat-value">2,761</div>
+          <div class="stat-label">Total Enrollments</div>
+          <div class="stat-sub">Across 3 active courses</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-icon-badge stat-icon-badge--green">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="stat-trend stat-trend--up">+5.3%</span>
+          </div>
+          <div class="stat-value">68.4%</div>
+          <div class="stat-label">Avg Completion Rate</div>
+          <div class="stat-sub">+5.3% vs last month</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <div class="stat-icon-badge stat-icon-badge--amber">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M9 12l2 2 4-4M4 4h12a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span class="stat-trend stat-trend--down">12 pending</span>
+          </div>
+          <div class="stat-value">327</div>
+          <div class="stat-label">Consent Records</div>
+          <div class="stat-sub">12 awaiting review</div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div>
+              <h2 class="chart-title">Enrollment by Course</h2>
+              <p class="chart-sub">Active learner distribution</p>
+            </div>
+          </div>
+          <div class="bar-chart-container">
+            <div class="bar-group">
+              <div class="bar-label">Coding With Scratch</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:82%;background:#C1127A"></div>
+                <span class="bar-count">1,042</span>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label">Game Development</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:67%;background:#6366F1"></div>
+                <span class="bar-count">849</span>
+              </div>
+            </div>
+            <div class="bar-group">
+              <div class="bar-label">Robotics</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:68%;background:#16A34A"></div>
+                <span class="bar-count">870</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-card-header">
+            <div>
+              <h2 class="chart-title">Completion Highlights</h2>
+              <p class="chart-sub">Average per course</p>
+            </div>
+          </div>
+          <div class="completion-list">
+            <div class="completion-item">
+              <div class="completion-info">
+                <div>
+                  <div class="completion-name">Coding With Scratch</div>
+                  <div class="completion-drop">Drop-off: Lesson 7</div>
+                </div>
+              </div>
+              <div class="completion-pct">74%</div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" style="width:74%;background:#C1127A"></div></div>
+
+            <div class="completion-item" style="margin-top:16px;">
+              <div class="completion-info">
+                <div>
+                  <div class="completion-name">Game Development</div>
+                  <div class="completion-drop">Drop-off: Lesson 5</div>
+                </div>
+              </div>
+              <div class="completion-pct" style="color:#6366F1">61%</div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" style="width:61%;background:#6366F1"></div></div>
+
+            <div class="completion-item" style="margin-top:16px;">
+              <div class="completion-info">
+                <div>
+                  <div class="completion-name">Robotics</div>
+                  <div class="completion-drop">Drop-off: Lesson 9</div>
+                </div>
+              </div>
+              <div class="completion-pct" style="color:#16A34A">70%</div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" style="width:70%;background:#16A34A"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generic Page placeholder for other navigation items -->
+    <div class="page" id="page-generic">
+      <div class="table-card">
+        <div class="card-header-row">
+          <div>
+            <h1 class="card-title" id="genericPageTitle">Page</h1>
+            <p class="card-subtitle">Manage this section across SheCode Africa.</p>
+          </div>
+          <div class="card-count">0 record(s)</div>
+        </div>
+        <div style="padding:40px 20px;text-align:center;color:var(--text-secondary);">
+          <p style="font-size:15px;margin-bottom:12px;">This module is configured and ready for live data connection.</p>
+          <button class="btn-filter" onclick="navigateTo('consent', document.querySelector('.stem-subitem[data-page=consent]'))">Return to Consent Management</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Side Sheet Drawer (Matching Image 4) -->
+  <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeDrawer()"></div>
+  <aside class="side-drawer" id="sideDrawer">
+    <div class="drawer-header">
+      <div class="drawer-header-info">
+        <span class="drawer-tag" id="drawerTag">Approved</span>
+        <h2 class="drawer-title" id="drawerTitle">Learner Name</h2>
+        <span class="drawer-subtitle" id="drawerSubtitle">Guardian consent and account details</span>
+      </div>
+      <!-- Pink circular close button matching Image 4 -->
+      <button class="drawer-close-circle" onclick="closeDrawer()" title="Close details">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2.5 2.5L11.5 11.5M11.5 2.5L2.5 11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="drawerBody">
+      <!-- Injected dynamically via app.js -->
+    </div>
+    <div class="drawer-footer" id="drawerFooter">
+      <!-- Action buttons injected dynamically -->
+    </div>
+  </aside>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
